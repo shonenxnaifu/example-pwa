@@ -1,31 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-app>
+        <v-app-bar app>
+            <v-btn icon v-if="$route.name !== 'home'"
+                @click="$router.go(-1) "
+            >
+                <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+            <v-toolbar-title >
+                <span>CropChien</span>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+        </v-app-bar>
+        <v-content>
+            <router-view></router-view>
+        </v-content>
+    </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+    import Home from './components/Home';
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+    export default {
+        name: 'App',
+        components: {
+            Home,
+        },
+        data () {
+            return {
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+            }
+        },
+    };
+</script>
