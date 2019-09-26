@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './components/Home'
 import Details from './components/Details'
 import Post from './components/Post'
+import Camera from './components/Camera'
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       name: 'post',
       props: true,
       component: Post
+    },
+    {
+      path: '/camera',
+      name: 'camera',
+      component: Camera
     }
   ]
 })

@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/messaging';
+import 'firebase/storage';
 
 const config = {
     apiKey: 'AIzaSyCOGqs77VCEM2HovDcISvHtcUqw65QPKQo',
@@ -18,6 +19,11 @@ db.settings({
     // timestampsInSnapshots: true no longer to set manually
 });
 
+db.enablePersistence({synchronizeTabs:true});
+
+const storage = firebase.storage();
+
 export default {
-    db
+    db,
+    storage
 }

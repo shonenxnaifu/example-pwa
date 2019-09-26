@@ -31,6 +31,12 @@
     import postDog from './mixin/postDog';
 
     export default {
+        props:{
+            pictureUrl:{
+                default:'',
+                type:String
+            }
+        },
         data(){
             return{
                 dogUrl: null,
@@ -40,14 +46,19 @@
             }
         },
         mounted() {
-            axios.get('https://dog.ceo/api/breed/appenzeller/images/random').then(response => {
-                if(response.data.status){
-                    this.dogUrl = response.data.message;
-                    this.loading=false;
-                }else{
-                    console.log("Error getting image")
-                }
-            });
+            if(this.pictureUrl !== ''){
+                this.dogUrl = this.pictureUrl;
+                this.loading=false;
+            }else{
+                axios.get('https://dog.ceo/api/breed/appenzeller/images/random').then(response => {
+                    if(response.data.status){
+                        this.dogUrl = response.data.message;
+                        this.loading=false;
+                    }else{
+                        console.log("Error getting image")
+                    }
+                });
+            }
         },
         methods: {
             post(){
