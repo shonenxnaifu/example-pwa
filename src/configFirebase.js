@@ -22,8 +22,10 @@ db.settings({
 db.enablePersistence({synchronizeTabs:true});
 
 const storage = firebase.storage();
+const messaging = firebase.messaging();
 
 export default {
     db,
-    storage
+    storage,
+    messaging
 }
